@@ -1,192 +1,185 @@
 import { Inter } from 'next/font/google'
-import { useEffect, useState } from "react";
-import { ColumnsType } from "antd/es/table";
-import { Button, Form, Input, message, Modal, Space, Table } from "antd";
+import {useEffect, useState} from "react";
+import {ColumnsType} from "antd/es/table";
+import {Button, Form, Input, message, Modal, Select, Space, Table, Tag} from "antd";
 import { faker } from '@faker-js/faker';
-import { User } from ".prisma/client";
+import {User} from ".prisma/client";
 const inter = Inter({ subsets: ['latin'] })
 
 const layout = {
-	labelCol: { span: 8 },
-	wrapperCol: { span: 16 },
+  labelCol: { span: 8 },
+  wrapperCol: { span: 16 },
 };
 
 const tailLayout = {
-	wrapperCol: { offset: 8, span: 12 },
+  wrapperCol: { offset: 8, span: 12 },
 };
 
 export default function Home() {
-	const [users, setUsers] = useState<User[]>([]);
-	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [form] = Form.useForm();
+  const [users, setUsers] = useState<User[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [form] = Form.useForm();
 
-	const onFinish = async (values: any) => {
-		console.log(values);
-		setIsModalOpen(false);
-		fetch('/api/create_user', {
-			method: 'POST',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(values)
-		}).then(async response => {
-			if (response.status === 200) {
-				const user = await response.json();
-				message.success('created user ' + user.name);
-				setUsers([...users, user]);
-			} else message.error(
-				`Failed to create user:\n ${JSON.stringify(await response.json())}`
-			);
-		}).catch(res => { message.error(res) })
-	};
+  const onFinish = async (values: any) => {
+    console.log(values);
+    setIsModalOpen(false);
+    fetch('/api/create_user', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(values)
+    }).then(async response => {
+      if (response.status === 200) {
+        const user = await response.json();
+        message.success('created user ' + user.name);
+        setUsers([...users, user]);
 
-	const onDelete = async (user: any) => {
-		const { id } = user;
-		setIsModalOpen(false);
-		fetch('/api/delete_user', {
-			method: 'POST',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({ id })
-		}).then(async response => {
-			if (response.status === 200) {
-				await response.json();
-				message.success('Deleted user ' + user.name);
-				setUsers(users.filter(u => u.id !== id));
-			} else message.error(`Failed to delete user:\n ${user.name}`);
-		}).catch(res => { message.error(res) })
-	};
+      } else message.error(
+          Failed to create user:\n ${JSON.stringify(await response.json())});
+    }).catch(res=>{message.error(res)})
+  };
 
-	const columns: ColumnsType<User> = [
-		{
-			title: 'ID',
-			dataIndex: 'id',
-			key: 'id',
-			render: (text) => <a>{text}</a>,
-		},
-		{
-			title: 'Name',
-			dataIndex: 'name',
-			key: 'name',
-			render: (text) => <a>{text}</a>,
-		},
-		{
-			title: 'Email',
-			dataIndex: 'email',
-			key: 'email',
-		},
-		{
-			title: 'Address',
-			dataIndex: 'address',
-			key: 'address',
-		},
-		{
-			title: 'Action',
-			key: 'action',
-			render: (_, record) => (
-				<Space size="middle">
-					<a onClick={() => onDelete(record)}>Delete</a>
-				</Space>
-			),
-		},
-	];
+  const onDelete = async (user: any) => {
+    const {id} = user;
+    setIsModalOpen(false);
+    fetch('/api/delete_user', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({id})
+    }).then(async response => {
+      if (response.status === 200) {
+        await response.json();
+        message.success('Deleted user ' + user.name);
+        setUsers(users.filter(u=> u.id !== id ));
 
-	const onReset = () => {
-		form.resetFields();
-	};
+      } else message.error(
+          Failed to delete user:\n ${user.name});
+    }).catch(res=>{message.error(res)})
+  };
 
-	const onFill = () => {
-		const firstName = faker.person.firstName();
-		const lastName = faker.person.lastName();
-		const email = faker.internet.email({ firstName, lastName });
-		const street = faker.location.streetAddress();
-		const city = faker.location.city();
-		const state = faker.location.state({ abbreviated: true });
-		const zip = faker.location.zipCode()
+  const columns: ColumnsType<User> = [
+    {
+      title: 'ID',
+      dataIndex: 'id',
+      key: 'id',
+      render: (text) => <a>{text}</a>,
+    },
+    {
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
+      render: (text) => <a>{text}</a>,
+    },
+    {
+      title: 'Email',
+      dataIndex: 'email',
+      key: 'email',
+    },
+    {
+      title: 'Address',
+      dataIndex: 'address',
+      key: 'address',
+    },
 
-		form.setFieldsValue({
-			name: `${firstName} ${lastName}`,
-			email: email,
-			address: `${street}, ${city}, ${state}, US, ${zip}`
-		});
-	};
+    {
+      title: 'Action',
+      key: 'action',
+      render: (_, record) => (
+          <Space size="middle">
+            <a onClick={()=>onDelete(record)}>Delete</a>
+          </Space>
+      ),
+    },
+  ];
 
-	const showModal = () => {
-		setIsModalOpen(true);
-		form.resetFields();
-	};
 
-	const handleCancel = () => {
-		setIsModalOpen(false);
-		form.resetFields();
-	};
+  const onReset = () => {
+    form.resetFields();
+  };
 
-	useEffect(() => {
-		fetch('api/all_user', { method: "GET" })
-			.then(res => {
-				res.json().then(
-					(json => { setUsers(json) })
-				)
-			})
-	}, []);
+  const onFill = () => {
+    const firstName = faker.person.firstName();
+    const lastName = faker.person.lastName();
+    const email = faker.internet.email({ firstName, lastName });
+    const street = faker.location.streetAddress();
+    const city = faker.location.city();
+    const state  = faker.location.state({ abbreviated: true });
+    const zip = faker.location.zipCode()
 
-	if (!users) return "Give me a second";
+    form.setFieldsValue({
+      name: ${firstName} ${lastName},
+      email: email,
+      address:
+          ${street}, ${city}, ${state}, US, ${zip}
+    });
+  };
+  const showModal = () => {
+    setIsModalOpen(true);
+    form.resetFields();
+  };
 
-	return (
-		<>
-			<header style={{ padding: '20px', background: '#f2f2f2' }}>
-				<h1>My App</h1>
-			</header>
-			<nav style={{ padding: '10px', background: '#ddd' }}>
-				<a href="/">Home</a> | <a href="/about">About</a> | <a href="/contact">Contact</a>
-			</nav>
-			<div style={{ padding: '20px' }}>
-				<Button type="primary" onClick={showModal}>
-					Add User
-				</Button>
-				<Modal title="Basic Modal" onCancel={handleCancel}
-					open={isModalOpen} footer={null} width={800}>
-					<Form
-						{...layout}
-						form={form}
-						name="control-hooks"
-						onFinish={onFinish}
-						style={{ maxWidth: 600 }}
-					>
-						<Form.Item name="name" label="Name" rules={[{ required: true }]}>
-							<Input />
-						</Form.Item>
-						<Form.Item name="email" label="email" rules={[{ required: true }]}>
-							<Input />
-						</Form.Item>
-						<Form.Item name="address" label="address" rules={[{ required: true }]}>
-							<Input />
-						</Form.Item>
+  const handleCancel = () => {
+    setIsModalOpen(false);
+    form.resetFields();
+  };
+  useEffect(()=>{
+    fetch('api/all_user', {method: "GET"})
+        .then(res => {
+          res.json().then(
+              (json=> {setUsers(json)})
+          )
+        })
+  }, []);
 
-						<Form.Item {...tailLayout}>
-							<Button type="primary" htmlType="submit">
-								Submit
-							</Button>
-							<Button htmlType="button" onClick={onReset}>
-								Reset
-							</Button>
-							<Button htmlType="button" onClick={onFill}>
-								Fill form
-							</Button>
-							<Button htmlType="button" onClick={handleCancel}>
-								Cancel
-							</Button>
-						</Form.Item>
-					</Form>
-				</Modal>
-				<Table columns={columns} dataSource={users} />
-			</div>
-			<footer style={{ padding: '20px', background: '#f2f2f2', textAlign: 'center' }}>
-				<p>&copy; 2024 My Company</p>
-			</footer>
-		</>
-	);
+  if (!users) return "Give me a second";
+
+  return  <>
+    <Button type="primary" onClick={showModal}>
+      Add User
+    </Button>
+    <Modal title="Basic Modal" onCancel={handleCancel}
+           open={isModalOpen} footer={null}  width={800}>
+      <Form
+          {...layout}
+          form={form}
+          name="control-hooks"
+          onFinish={onFinish}
+          style={{ maxWidth: 600 }}
+      >
+        <Form.Item name="name" label="Name" rules={[{ required: true }]}>
+          <Input />
+        </Form.Item>
+        <Form.Item name="email" label="email" rules={[{ required: true }]}>
+          <Input />
+        </Form.Item>
+        <Form.Item name="address" label="address" rules={[{ required: true }]}>
+          <Input />
+        </Form.Item>
+
+        <Form.Item {...tailLayout} >
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+          <Button htmlType="button" onClick={onReset}>
+            Reset
+          </Button>
+          <Button  htmlType="button" onClick={onFill}>
+            Fill form
+          </Button>
+          <Button  htmlType="button" onClick={handleCancel}>
+            Cancel
+          </Button>
+        </Form.Item>
+      </Form>
+    </Modal>
+    {/*<p>{JSON.stringify(users)}</p>*/}
+    <Table columns={columns} dataSource={users} />;
+  </>;
+
+
 }
