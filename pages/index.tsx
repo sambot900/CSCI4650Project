@@ -65,31 +65,31 @@ export default function Home() {
 
   const columns: ColumnsType<User> = [
     {
-      title: 'sport',
-      dataIndex: 'id',
-      key: 'id',
+      title: 'Sport',
+      dataIndex: 'sport',
+      key: 'sport',
       render: (text) => <a>{text}</a>,
     },
     {
-      title: 'teamname',
-      dataIndex: 'name',
-      key: 'name',
+      title: 'Team Name',
+      dataIndex: 'teamname',
+      key: 'teamname',
       render: (text) => <a>{text}</a>,
     },
     {
-      title: 'location',
-      dataIndex: 'email',
-      key: 'email',
+      title: 'Location (City)',
+      dataIndex: 'location',
+      key: 'location',
     },
     {
-      title: 'totalpointsscored',
-      dataIndex: 'address',
-      key: 'address',
+      title: 'Total Points Scored',
+      dataIndex: 'totalpointsscored',
+      key: 'totalpointsscored',
     },
     {
-      title: 'numberofwins',
-      dataIndex: 'address',
-      key: 'address',
+      title: 'Number of Wins',
+      dataIndex: 'numberofwins',
+      key: 'numberofwins',
     },
     {
       title: 'Action',
