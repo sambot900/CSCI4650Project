@@ -1,3 +1,4 @@
+
 import { Inter } from 'next/font/google'
 import {useEffect, useState} from "react";
 import {ColumnsType} from "antd/es/table";
@@ -37,7 +38,7 @@ export default function Home() {
         setUsers([...users, user]);
 
       } else message.error(
-          Failed to create user:\n ${JSON.stringify(await response.json())});
+          `Failed to create user:\n ${JSON.stringify(await response.json())}`);
     }).catch(res=>{message.error(res)})
   };
 
@@ -58,7 +59,7 @@ export default function Home() {
         setUsers(users.filter(u=> u.id !== id ));
 
       } else message.error(
-          Failed to delete user:\n ${user.name});
+          `Failed to delete user:\n ${user.name}`);
     }).catch(res=>{message.error(res)})
   };
 
@@ -112,10 +113,10 @@ export default function Home() {
     const zip = faker.location.zipCode()
 
     form.setFieldsValue({
-      name: ${firstName} ${lastName},
+      name: `${firstName} ${lastName}`,
       email: email,
       address:
-          ${street}, ${city}, ${state}, US, ${zip}
+          `${street}, ${city}, ${state}, US, ${zip}`
     });
   };
   const showModal = () => {
