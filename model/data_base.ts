@@ -1,6 +1,7 @@
 export type User = {
-    id : number;
-    email: string;
-    name: string;
-    address: string;
+    sport : string;
+    teamname: string;
+    location: string;
+    totalpointsscored: number;
+    numberofwins: number;
 }
