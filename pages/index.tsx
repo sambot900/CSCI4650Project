@@ -149,7 +149,7 @@ export default function Home() {
 		</header>
 		
 		<Button type="primary" onClick={showModal}>
-			Add User
+			Add Statistic
 		</Button>
 		<Modal title="Basic Modal" onCancel={handleCancel}
 			open={isModalOpen} footer={null}  width={800}>
