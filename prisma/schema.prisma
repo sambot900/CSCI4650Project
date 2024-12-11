@@ -19,8 +19,8 @@ datasource db {
 }
 
 model User {
-  sport   		String    @id @default(autoincrement())
-  teamname     		String 
+  sport   		String
+  teamname     		String
   location    	String
   totalpointsscored 	Int
   numberofwins 	Int
