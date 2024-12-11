@@ -71,7 +71,7 @@ export default function Home() {
       render: (text) => <a>{text}</a>,
     },
     {
-      title: teamname',
+      title: 'teamname',
       dataIndex: 'name',
       key: 'name',
       render: (text) => <a>{text}</a>,
