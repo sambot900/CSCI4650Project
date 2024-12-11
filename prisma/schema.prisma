@@ -19,11 +19,11 @@ datasource db {
 }
 
 model User {
-  Sport   		String    @id @default(autoincrement())
-  Team Name    		String 
-  Location (City)    	String
-  Total Points Scored 	Int
-  Number of Wins 	Int
+  sport   		String    @id @default(autoincrement())
+  teamname     		String 
+  location    	String
+  totalpointsscored 	Int
+  numberofwins 	Int
   posts   Post[]
 }
 
