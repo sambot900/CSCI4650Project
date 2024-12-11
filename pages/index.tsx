@@ -138,48 +138,55 @@ export default function Home() {
   }, []);
 
   if (!users) return "Give me a second";
-
+  
   return  <>
-    <Button type="primary" onClick={showModal}>
-      Add User
-    </Button>
-    <Modal title="Basic Modal" onCancel={handleCancel}
-           open={isModalOpen} footer={null}  width={800}>
-      <Form
-          {...layout}
-          form={form}
-          name="control-hooks"
-          onFinish={onFinish}
-          style={{ maxWidth: 600 }}
-      >
-        <Form.Item name="name" label="Name" rules={[{ required: true }]}>
-          <Input />
-        </Form.Item>
-        <Form.Item name="email" label="email" rules={[{ required: true }]}>
-          <Input />
-        </Form.Item>
-        <Form.Item name="address" label="address" rules={[{ required: true }]}>
-          <Input />
-        </Form.Item>
+	<header style={{ backgroundColor: 'gray', padding: '10px' }}>
+		<h1 style={{ margin: 0, color: 'white' }}>SportStats</h1>
+	</header>
+	
+	<Button type="primary" onClick={showModal}>
+		Add User
+	</Button>
+	<Modal title="Basic Modal" onCancel={handleCancel}
+		open={isModalOpen} footer={null}  width={800}>
+		<Form
+			{...layout}
+			form={form}
+			name="control-hooks"
+			onFinish={onFinish}
+			style={{ maxWidth: 600 }}
+		>
+			<Form.Item name="name" label="Name" rules={[{ required: true }]}>
+				<Input />
+			</Form.Item>
+			<Form.Item name="email" label="email" rules={[{ required: true }]}>
+				<Input />
+			</Form.Item>
+			<Form.Item name="address" label="address" rules={[{ required: true }]}>
+				<Input />
+			</Form.Item>
 
-        <Form.Item {...tailLayout} >
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-          <Button htmlType="button" onClick={onReset}>
-            Reset
-          </Button>
-          <Button  htmlType="button" onClick={onFill}>
-            Fill form
-          </Button>
-          <Button  htmlType="button" onClick={handleCancel}>
-            Cancel
-          </Button>
-        </Form.Item>
-      </Form>
-    </Modal>
-    {/*<p>{JSON.stringify(users)}</p>*/}
-    <Table columns={columns} dataSource={users} />;
+			<Form.Item {...tailLayout} >
+				<Button type="primary" htmlType="submit">
+					Submit
+				</Button>
+				<Button htmlType="button" onClick={onReset}>
+					Reset
+				</Button>
+				<Button  htmlType="button" onClick={onFill}>
+					Fill form
+				</Button>
+				<Button  htmlType="button" onClick={handleCancel}>
+					Cancel
+				</Button>
+			</Form.Item>
+		</Form>
+	</Modal>
+	<Table columns={columns} dataSource={users} />
+
+	<footer style={{ backgroundColor: 'gray', padding: '10px', marginTop: '20px', textAlign: 'center', color: 'white' }}>
+		All rights reserved 2024
+	</footer>
   </>;
 
 
