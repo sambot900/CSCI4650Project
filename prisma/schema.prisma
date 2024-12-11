@@ -5,10 +5,17 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// THIS IS ORIGINAL CODE
+// datasource db {
+//   provider = "sqlite"
+//   url      = env("DATABASE_URL")
+//   //   mysql://USER:PASSWORD@HOST:PORT/DATABASE
+// }
+
+// THIS IS REPLACEMENT CODE
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
-  //   mysql://USER:PASSWORD@HOST:PORT/DATABASE
+  provider = "mysql" 
+  url      = "mysql://USER:PASSWORD@HOST:PORT/DATABASE"  
 }
 
 model User {
