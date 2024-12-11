@@ -33,7 +33,7 @@ export default function Home() {
 		}).then(async response => {
 			if (response.status === 200) {
 				const user = await response.json();
-				message.success('created user ' + user.name);
+				message.success('created user ' + user.sport);
 				setUsers([...users, user]);
 			} else message.error(
 				`Failed to create user:\n ${JSON.stringify(await response.json())}`
@@ -54,10 +54,10 @@ export default function Home() {
 		}).then(async response => {
 			if (response.status === 200) {
 				await response.json();
-				message.success('Deleted user ' + user.name);
+				message.success('Deleted user ' + user.sport);
 				setUsers(users.filter(u=> u.id !== id ));
 			} else message.error(
-				`Failed to delete user:\n ${user.name}`
+				`Failed to delete user:\n ${user.sport}`
 			);
 		}).catch(res=>{message.error(res)})
 	};
