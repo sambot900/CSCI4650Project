@@ -132,8 +132,7 @@ export default function Home() {
 			Artist: artist,
 			Album: album,
 			Genre: genre,
-			Duration: duration,
-			Year: year
+			
 		});
 
 		
