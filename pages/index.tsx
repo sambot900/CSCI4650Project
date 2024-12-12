@@ -115,6 +115,8 @@ export default function Home() {
 		const artist = faker.music.artist();
 		const album = faker.music.album();
 		const genre = faker.music.genre();
+		const year = "1985"
+		const duration = "1:23"
 		
 		
 		
@@ -122,8 +124,10 @@ export default function Home() {
 		form.setFieldsValue({
 			Song: songName,
 			Artist: artist,
-			Album: album
-			Genre: genre
+			Album: album,
+			Genre: genre,
+			Duration: duration,
+			Year: year
 		});
 	};
 
