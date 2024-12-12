@@ -166,7 +166,10 @@ export default function Home() {
 				<h1 style={{ margin: 0, color: 'white' }}>Song Share</h1>
 			</header>
 			
-			<Button type="primary" onClick={showModal}>
+			<Button 
+				type="primary" 
+				style={{ backgroundColor: 'red', marginTop: '20px', marginBottom: '20px' }} 
+				onClick={showModal}>
 				Add Song
 			</Button>
 			<Modal title="Basic Modal" onCancel={handleCancel}
