@@ -12,13 +12,14 @@ datasource db {
 }
 
 model User {
-  song		String
-  artist	String
-  album    	String
-  year 		String
-  genre 	String
-  duration	String
-  posts		Post[]
+  id       Int     @id @default(autoincrement())
+  song     String
+  artist   String
+  album    String
+  year     String
+  genre    String
+  duration String
+  posts    Post[]
 }
 
 model Post {
