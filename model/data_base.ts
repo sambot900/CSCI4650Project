@@ -1,4 +1,5 @@
 export type User = {
+    id : number;
     song : string;
     artist: string;
     album: string;
