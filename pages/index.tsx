@@ -63,12 +63,7 @@ export default function Home() {
 	};
 
 	const columns: ColumnsType<User> = [
-		{
-		      title: 'ID',
-		      dataIndex: 'id',
-		      key: 'id',
-		      render: (text) => <a>{text}</a>,
-		    },
+
 		{
 			title: 'Song',
 			dataIndex: 'song',
