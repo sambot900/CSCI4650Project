@@ -6,9 +6,14 @@ generator client {
 }
 
 
+//datasource db {
+//  provider = "mysql" 
+//  url      = "mysql://admin:uGp)oW~3GVjf8JO<47u~S4{g42!F@group10db.c1yye8a84gu7.us-east-1.rds.amazonaws.com:3306/group10db"
+//}
+
 datasource db {
   provider = "mysql" 
-  url      = "mysql://admin:uGp)oW~3GVjf8JO<47u~S4{g42!F@group10db.c1yye8a84gu7.us-east-1.rds.amazonaws.com:3306/group10db"
+  url      = "mysql://admin:Pizza6969@group10db.c7omye002oxr.us-east-2.rds.amazonaws.com:3306/group10db"
 }
 
 model User {
