@@ -76,7 +76,7 @@ export default function Home() {
 			render: (text) => <a>{text}</a>,
 		},
 		{
-			title: 'Album',
+			title: 'Album (City)',
 			dataIndex: 'album',
 			key: 'album',
 		},
@@ -111,7 +111,7 @@ export default function Home() {
 	};
 
 	const onFill = () => {
-		const songName = function songName(): string;
+		const songName = faker.music.songName();
 		const artist = faker.music.artist();
 		const album = faker.music.album();
 		const genre = faker.music.genre();
@@ -120,9 +120,10 @@ export default function Home() {
 		
 
 		form.setFieldsValue({
-			name: `${firstName} ${lastName}`,
-			email: email,
-			address: `${street}, ${city}, ${state}, US, ${zip}`
+			Song: songName,
+			Artist: artist,
+			Album: album
+			Genre: genre
 		});
 	};
 
