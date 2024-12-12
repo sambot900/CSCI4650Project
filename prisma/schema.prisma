@@ -5,26 +5,20 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// THIS IS ORIGINAL CODE
-// datasource db {
-//   provider = "sqlite"
-//   url      = env("DATABASE_URL")
-//   //   mysql://USER:PASSWORD@HOST:PORT/DATABASE
-// }
 
-// THIS IS REPLACEMENT CODE
 datasource db {
   provider = "mysql" 
   url      = "mysql://USER:PASSWORD@HOST:PORT/DATABASE"  
 }
 
 model User {
-  sport   		String
-  teamname     		String
-  location    	String
-  totalpointsscored 	Int
-  numberofwins 	Int
-  posts   Post[]
+  song		String
+  artist	String
+  album    	String
+  year 		String
+  genre 	String
+  duration	String
+  posts		Post[]
 }
 
 model Post {
@@ -35,3 +29,4 @@ model Post {
   author    User    @relation(fields: [authorId], references: [id])
   authorId  Int
 }
+
