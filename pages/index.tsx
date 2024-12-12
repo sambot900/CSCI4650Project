@@ -162,7 +162,7 @@ export default function Home() {
 
 	return  <>
 		<header style={{ backgroundColor: 'gray', padding: '10px', display: 'flex', alignItems: 'center' }}>
-			<img src="https://i.imgur.com/dLrqvx0.png" alt="Logo" style={{ height: '40px', marginRight: '10px' }} />
+			<img src="https://cdn.pixabay.com/photo/2017/08/02/09/42/music-2570451_1280.jpg" alt="Logo" style={{ height: '40px', marginRight: '10px' }} />
 			<h1 style={{ margin: 0, color: 'white' }}>Song Share</h1>
 		</header>
 		
