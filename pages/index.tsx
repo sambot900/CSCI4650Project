@@ -76,7 +76,7 @@ export default function Home() {
 			render: (text) => <a>{text}</a>,
 		},
 		{
-			title: 'Album (City)',
+			title: 'Album',
 			dataIndex: 'album',
 			key: 'album',
 		},
