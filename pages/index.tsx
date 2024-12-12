@@ -1,3 +1,5 @@
+index.tsx
+
 import { Inter } from 'next/font/google'
 import {useEffect, useState} from "react";
 import {ColumnsType} from "antd/es/table";
@@ -64,31 +66,36 @@ export default function Home() {
 
 	const columns: ColumnsType<User> = [
 		{
-			title: 'Sport',
-			dataIndex: 'sport',
-			key: 'sport',
+			title: 'Song',
+			dataIndex: 'song',
+			key: 'song',
 			render: (text) => <a>{text}</a>,
 		},
 		{
-			title: 'Team Name',
-			dataIndex: 'teamname',
-			key: 'teamname',
+			title: 'Artist',
+			dataIndex: 'artist',
+			key: 'artist',
 			render: (text) => <a>{text}</a>,
 		},
 		{
-			title: 'Location (City)',
-			dataIndex: 'location',
-			key: 'location',
+			title: 'Album (City)',
+			dataIndex: 'album',
+			key: 'album',
 		},
 		{
-			title: 'Total Points Scored',
-			dataIndex: 'totalpointsscored',
-			key: 'totalpointsscored',
+			title: 'Year',
+			dataIndex: 'year',
+			key: 'year',
 		},
 		{
-			title: 'Number of Wins',
-			dataIndex: 'numberofwins',
-			key: 'numberofwins',
+			title: 'Genre',
+			dataIndex: 'genre',
+			key: 'genre',
+		},
+		{
+			title: 'Duration',
+			dataIndex: 'duration',
+			key: 'duration',
 		},
 		{
 			title: 'Action',
@@ -145,11 +152,11 @@ export default function Home() {
 	return  <>
 		<header style={{ backgroundColor: 'gray', padding: '10px', display: 'flex', alignItems: 'center' }}>
 			<img src="https://i.imgur.com/dLrqvx0.png" alt="Logo" style={{ height: '40px', marginRight: '10px' }} />
-			<h1 style={{ margin: 0, color: 'white' }}>SportStats</h1>
+			<h1 style={{ margin: 0, color: 'white' }}>Favorite Songs</h1>
 		</header>
 		
 		<Button type="primary" onClick={showModal}>
-			Add Statistic
+			Add Song
 		</Button>
 		<Modal title="Basic Modal" onCancel={handleCancel}
 			open={isModalOpen} footer={null}  width={800}>
@@ -160,19 +167,22 @@ export default function Home() {
 				onFinish={onFinish}
 				style={{ maxWidth: 600 }}
 			>
-				<Form.Item name="sport" label="Sport" rules={[{ required: true }]}>
+				<Form.Item name="song" label="Song" rules={[{ required: true }]}>
 					<Input />
 				</Form.Item>
-				<Form.Item name="teamname" label="Team Name" rules={[{ required: true }]}>
+				<Form.Item name="artist" label="Artist" rules={[{ required: true }]}>
 					<Input />
 				</Form.Item>
-				<Form.Item name="location" label="Location" rules={[{ required: true }]}>
+				<Form.Item name="album" label="Album" rules={[{ required: true }]}>
 					<Input />
 				</Form.Item>
-				<Form.Item name="totalpointsscored" label="Total Points Scored" rules={[{ required: true }]}>
+				<Form.Item name="year" label="Year" rules={[{ required: true }]}>
 					<Input />
 				</Form.Item>
-				<Form.Item name="numberofwins" label="Number of Wins" rules={[{ required: true }]}>
+				<Form.Item name="genre" label="Genre" rules={[{ required: true }]}>
+					<Input />
+				</Form.Item>
+				<Form.Item name="duration" label="Duration" rules={[{ required: true }]}>
 					<Input />
 				</Form.Item>
 
