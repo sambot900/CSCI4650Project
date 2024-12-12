@@ -155,7 +155,7 @@ export default function Home() {
 	return  <>
 		<header style={{ backgroundColor: 'gray', padding: '10px', display: 'flex', alignItems: 'center' }}>
 			<img src="https://i.imgur.com/dLrqvx0.png" alt="Logo" style={{ height: '40px', marginRight: '10px' }} />
-			<h1 style={{ margin: 0, color: 'white' }}>Favorite Songs</h1>
+			<h1 style={{ margin: 0, color: 'white' }}>Song Share</h1>
 		</header>
 		
 		<Button type="primary" onClick={showModal}>
