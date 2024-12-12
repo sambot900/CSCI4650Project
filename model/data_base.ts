@@ -1,7 +1,9 @@
 export type User = {
-    sport : string;
-    teamname: string;
-    location: string;
-    totalpointsscored: string;
-    numberofwins: string;
+    song : string;
+    artist: string;
+    album: string;
+    year: string;
+    genre: string;
+    duration: string;
+    posts: string;
 }
