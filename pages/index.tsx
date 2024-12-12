@@ -119,7 +119,7 @@ export default function Home() {
 	const onFill = () => {
 		const songName = faker.music.songName();
 		const artist = faker.music.songName();
-		const album = faker.music.album();
+		const album = faker.music.songName();
 		const genre = faker.music.genre();
 		const year = "1985"
 		const duration = "1:23"
