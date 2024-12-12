@@ -1,5 +1,3 @@
-index.tsx
-
 import { Inter } from 'next/font/google'
 import {useEffect, useState} from "react";
 import {ColumnsType} from "antd/es/table";
