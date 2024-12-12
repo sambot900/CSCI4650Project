@@ -33,7 +33,7 @@ export default function Home() {
 		}).then(async response => {
 			if (response.status === 200) {
 				const user = await response.json();
-				message.success('created user ' + user.song);
+				message.success('Created song record' + user.song);
 				setUsers([...users, user]);
 			} else message.error(
 				`Failed to create user:\n ${JSON.stringify(await response.json())}`
@@ -54,7 +54,7 @@ export default function Home() {
 		}).then(async response => {
 			if (response.status === 200) {
 				await response.json();
-				message.success('Deleted user ' + user.song);
+				message.success('Deleted song record ' + user.song);
 				setUsers(users.filter(u=> u.id !== id ));
 			} else message.error(
 				`Failed to delete user:\n ${user.song}`
@@ -202,9 +202,6 @@ export default function Home() {
 					</Button>
 					<Button htmlType="button" onClick={onReset}>
 						Reset
-					</Button>
-					<Button  htmlType="button" onClick={onFill}>
-						Fill form
 					</Button>
 					<Button  htmlType="button" onClick={handleCancel}>
 						Cancel
