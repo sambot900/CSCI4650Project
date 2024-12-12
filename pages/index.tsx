@@ -159,60 +159,62 @@ export default function Home() {
 
 	if (!users) return "Give me a second";
 
-	return  <>
-		<header style={{ backgroundColor: 'gray', padding: '10px', display: 'flex', alignItems: 'center' }}>
-			<img src="https://cdn.pixabay.com/photo/2017/08/02/09/42/music-2570451_1280.jpg" alt="Logo" style={{ height: '40px', marginRight: '10px' }} />
-			<h1 style={{ margin: 0, color: 'white' }}>Song Share</h1>
-		</header>
-		
-		<Button type="primary" onClick={showModal}>
-			Add Song
-		</Button>
-		<Modal title="Basic Modal" onCancel={handleCancel}
-			open={isModalOpen} footer={null}  width={800}>
-			<Form
-				{...layout}
-				form={form}
-				name="control-hooks"
-				onFinish={onFinish}
-				style={{ maxWidth: 600 }}
-			>
-				<Form.Item name="song" label="Song" rules={[{ required: true }]}>
-					<Input />
-				</Form.Item>
-				<Form.Item name="artist" label="Artist" rules={[{ required: true }]}>
-					<Input />
-				</Form.Item>
-				<Form.Item name="album" label="Album" rules={[{ required: true }]}>
-					<Input />
-				</Form.Item>
-				<Form.Item name="year" label="Year" rules={[{ required: true }]}>
-					<Input />
-				</Form.Item>
-				<Form.Item name="genre" label="Genre" rules={[{ required: true }]}>
-					<Input />
-				</Form.Item>
-				<Form.Item name="duration" label="Duration" rules={[{ required: true }]}>
-					<Input />
-				</Form.Item>
+	return (
+		<div style={{ backgroundColor: '#333', minHeight: '100vh' }}>
+			<header style={{ backgroundColor: 'gray', padding: '10px', display: 'flex', alignItems: 'center' }}>
+				<img src="https://cdn.pixabay.com/photo/2017/08/02/09/42/music-2570451_1280.jpg" alt="Logo" style={{ height: '40px', marginRight: '10px' }} />
+				<h1 style={{ margin: 0, color: 'white' }}>Song Share</h1>
+			</header>
+			
+			<Button type="primary" onClick={showModal}>
+				Add Song
+			</Button>
+			<Modal title="Basic Modal" onCancel={handleCancel}
+				open={isModalOpen} footer={null}  width={800}>
+				<Form
+					{...layout}
+					form={form}
+					name="control-hooks"
+					onFinish={onFinish}
+					style={{ maxWidth: 600 }}
+				>
+					<Form.Item name="song" label="Song" rules={[{ required: true }]}>
+						<Input />
+					</Form.Item>
+					<Form.Item name="artist" label="Artist" rules={[{ required: true }]}>
+						<Input />
+					</Form.Item>
+					<Form.Item name="album" label="Album" rules={[{ required: true }]}>
+						<Input />
+					</Form.Item>
+					<Form.Item name="year" label="Year" rules={[{ required: true }]}>
+						<Input />
+					</Form.Item>
+					<Form.Item name="genre" label="Genre" rules={[{ required: true }]}>
+						<Input />
+					</Form.Item>
+					<Form.Item name="duration" label="Duration" rules={[{ required: true }]}>
+						<Input />
+					</Form.Item>
 
-				<Form.Item {...tailLayout} >
-					<Button type="primary" htmlType="submit">
-						Submit
-					</Button>
-					<Button htmlType="button" onClick={onReset}>
-						Reset
-					</Button>
-					<Button  htmlType="button" onClick={handleCancel}>
-						Cancel
-					</Button>
-				</Form.Item>
-			</Form>
-		</Modal>
-		<Table columns={columns} dataSource={users} />
+					<Form.Item {...tailLayout} >
+						<Button type="primary" htmlType="submit">
+							Submit
+						</Button>
+						<Button htmlType="button" onClick={onReset}>
+							Reset
+						</Button>
+						<Button  htmlType="button" onClick={handleCancel}>
+							Cancel
+						</Button>
+					</Form.Item>
+				</Form>
+			</Modal>
+			<Table columns={columns} dataSource={users} />
 
-		<footer style={{ backgroundColor: 'gray', padding: '10px', marginTop: '20px', textAlign: 'center', color: 'white' }}>
-			All rights reserved 2024
-		</footer>
-	</>;
+			<footer style={{ backgroundColor: 'gray', padding: '10px', marginTop: '20px', textAlign: 'center', color: 'white' }}>
+				All rights reserved 2024
+			</footer>
+		</div>
+	);
 }
